@@ -1,1 +1,1 @@
-<center><h1>CodeBuddy Frontend</h1></center>
+<center><h1>Documentation For CodeBuddy Frontend</h1></center>
