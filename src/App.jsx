@@ -1,10 +1,11 @@
 import './App.css'
+import UserProfile from './components/user/UserProfile/UserProfile'
 
 function App() {
 
   return (
     <>
-      <h1>React App</h1>
+     <UserProfile></UserProfile>
     </>
   )
 }
