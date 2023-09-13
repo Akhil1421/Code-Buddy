@@ -1,4 +1,5 @@
-import './App.css'
+import { BrowserRouter ,Route,Routes } from 'react-router-dom'
+import PassReset from './components/passReset/changePass.jsx';
 import UserProfile from './components/user/UserProfile/UserProfile'
 
 function App() {
@@ -7,6 +8,11 @@ function App() {
     <>
      <UserProfile></UserProfile>
     </>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/resetPass" element={<PassReset></PassReset>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
