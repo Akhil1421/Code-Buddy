@@ -3,22 +3,19 @@ import './changePass.css'
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
+import isPasswordStrong from '../../data/isPasswordStrong';
 
 
 const ChangePass = () => {
   const [queryParameters] = useSearchParams();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const isPasswordStrong = (password) => {
-    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    return strongPasswordRegex.test(password);
-  };
+  
   const handleSubmit = async (e) => {
     try {
       if (newPassword !== confirmPassword) {
         e.preventDefault();
-        toast.error("Passwords doesn't not match!");
+        toast.error("Passwords doesn't  match!");
         return;
       }
       if (!isPasswordStrong(newPassword)) {
@@ -42,13 +39,16 @@ const ChangePass = () => {
   }
   return (
     <div className="container">
+    <div>
+        <div id="resetPassImgCont">
+          <img id="resetPassImg" src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="background-img" />
+        </div>
+      </div>
       <div className="card">
         <div className="form">
-          <h1>Reset Password</h1>
-          <label htmlFor="newPassword">New Password:</label><br />
-          <input value={newPassword} onChange={(e) => { setNewPassword(e.target.value) }} type="password" name="newPassword" id="newPassword"></input><br />
-          <label htmlFor="text">Confirm Password:</label><br />
-          <input value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value) }} type="password" name="confirmPassword" id="confirmPassword" /><br />
+          <div id="resetPass">Reset Password</div>
+          <input className='resetPassIn' value={newPassword} placeholder="New Password" onChange={(e) => { setNewPassword(e.target.value) }} type="password" name="newPassword" id="newPassword"></input>
+          <input className="resetPassIn" value={confirmPassword} placeholder="Confirm Password" onChange={(e) => { setConfirmPassword(e.target.value) }} type="password" name="confirmPassword" id="confirmPassword" /><br />
           <button onClick={handleSubmit} className='reset-button' type="submit">Submit</button>
         </div>
       </div>
@@ -56,4 +56,5 @@ const ChangePass = () => {
   )
 }
 
-export default ChangePass
+export default ChangePass;
+

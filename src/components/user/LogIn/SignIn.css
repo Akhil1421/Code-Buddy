@@ -1,0 +1,130 @@
+body{
+    padding:0;
+    overflow: hidden;
+}
+#loginImgcont{
+    height:35vh;
+    width:98vw;
+    overflow: hidden;
+    border-radius: 10px;
+    margin:20px auto;
+    background: rgba(255, 0, 0, 0.8);
+}
+#loginImg{
+    width:98vw;
+    position: relative;
+    top:-290px;
+    opacity: 0.85;
+}
+#logInHere{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 22vw;
+    height:18vh;
+    background-color: #4492f0;
+    border-radius: 10px;
+    position:relative;
+    top:-40px;
+    box-shadow: 0 5px 15px  #777a7aa7;
+} 
+.logInIcons{
+    color:white;
+    margin:16px;
+}
+
+.logInText{
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size : 22px;
+    letter-spacing : 0.1876px;
+    line-height : 32.5px;
+    color : rgb(255, 255, 255);
+    text-align : center;
+    word-spacing : 0px;
+    font-weight: 700;
+}
+
+#icnLogCont{
+    display: flex;
+    justify-content: center;    
+}
+
+.logInInput{
+    width:22vw;
+    height:45px;
+    margin:5px;
+    border-style: none;
+    border-bottom: 1px solid #696c7092;
+    transition: border-bottom  0.3s ease-in-out;
+}
+
+
+.logInInput:focus{
+    border-bottom: 2px solid #4492f0;
+    outline: none;
+}
+
+#logInButton{
+    width:22vw;
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size : 16px;
+    letter-spacing : 0.1876px;
+    line-height : 32.5px;
+    color : rgb(255, 255, 255);
+    margin:auto;
+    background-color: #4492f0;
+    height:40px;
+    border-radius:8px;
+    border-style: none;   
+    margin: 20px 0;
+    color:white;
+    position: relative;
+    top:-20px;
+}
+
+#logInButton:hover{
+    box-shadow: 0 5px 10px  #4491f086;
+} 
+
+#logInCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 24vw;
+    min-height:460px;
+    border-radius: 10px;
+    padding:10px;
+    margin:auto;
+    position: relative;
+    top:-150px;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0 2px 10px  rgba(177, 176, 176, 0.655);
+}
+
+#logInLink{
+    color:#358af1;
+    text-decoration:none;
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight:bold ;
+    font-size: 14px;
+}
+
+.logInAddText{
+    font-family : MS Shell Dlg ;
+    font-size : 13.3333px;
+    color:rgb(107, 102, 102);
+    word-spacing : 0px;
+    margin:10px 0;
+    text-align: center;
+}
+
+.logInAddText1{
+    position:relative;
+    top:-15px;
+}
+#logInBottom{
+    position: relative;
+    top:-30px;
+}

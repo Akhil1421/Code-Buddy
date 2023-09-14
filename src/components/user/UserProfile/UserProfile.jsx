@@ -6,9 +6,35 @@ import {
   MdSettings,
   MdOutlineNotificationsNone,
 } from "react-icons/md";
+import isPasswordStrong from "../../../data/isPasswordStrong";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+
+
+
+
+const sendResponse=async (Password,queryParameters1,setPassword,setPassword2)=>{
+  const response = await axios.post('http://localhost:5000/auth/changePass', { user_id: queryParameters1.get('Token'), Password, }, {
+    headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      toast.success(response.data.msg);
+      setPassword('');
+      setPassword2('');
+}
+
+const clickHandler=(Password,Password2,setPassword,setPassword2,queryParameters1)=>{
+  Password===Password2?((!isPasswordStrong(Password)&&toast.error("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number!")||(sendResponse(Password,queryParameters1,setPassword,setPassword2)))):toast.error("Passwords do not match!");
+};
 
 const UserProfile = () => {
   const [userName, setuserName] = useState("Admin");
+  const [Password, setPassword] = useState("");
+  const [Password2, setPassword2] = useState("");
+  const [queryParameters1] = useSearchParams();
   return (
     <div id="outer">
       <div>
@@ -79,17 +105,25 @@ const UserProfile = () => {
             <div className="infoDiv">
               <div className="heading">New Password</div>
               <input
-                type="text"
+                type="password"
                 className="fifty_percent"
                 placeholder="New Password"
+                value={Password}
+                onChange={(e)=>{
+                  setPassword(e.target.value);
+                }}
               ></input>
             </div>
             <div className="infoDiv">
               <div className="heading">Password Confirmation</div>
               <input
-                type="text"
+                type="password"
                 placeholder="Confirm Password"
                 className="fifty_percent"
+                value={Password2}
+                onChange={(e)=>{
+                  setPassword2(e.target.value);
+                }}
               ></input>
               <div className="snip">
                 In the demo version the email can not be updated
@@ -97,7 +131,9 @@ const UserProfile = () => {
             </div>
           </div>
           <div>
-            <button id="third">Save Changes</button>
+            <button id="third" onClick={()=>{
+              clickHandler(Password,Password2,setPassword,setPassword2,queryParameters1);
+            }}>Save Changes</button>
           </div>
         </div>
       </div>

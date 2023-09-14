@@ -1,6 +1,8 @@
 import { BrowserRouter ,Route,Routes } from 'react-router-dom'
 import PassReset from './components/passReset/changePass.jsx';
 import UserProfile from './components/user/UserProfile/UserProfile';
+import SignUp from './components/user/SignUp/SignUp.jsx';
+import SignIn from './components/user/LogIn/SignIn.jsx';
 
 function App() {
 
@@ -9,6 +11,8 @@ function App() {
       <Routes>
       <Route path="/resetPass" element={<PassReset></PassReset>}/>
       <Route path="/userProfile" element={<UserProfile></UserProfile>}/>
+      <Route path="/signUp" element={<SignUp/>}/>
+      <Route path="/signIn" element={<SignIn/>}/>
       </Routes>
     </BrowserRouter>
   )
