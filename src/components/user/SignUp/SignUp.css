@@ -1,18 +1,16 @@
 body{
     padding:0;
-    overflow: hidden;
 }
 #imgcont{
     max-height:35vh;
     width:98vw;
-    overflow: hidden;
     border-radius: 10px;
     margin:20px auto;
     background: rgba(255, 0, 0, 0.8);
+    overflow: hidden;
 }
 #img{
     width:98vw;
-    
     position: relative;
     top:-280px;
     opacity: 0.85;

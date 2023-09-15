@@ -4,16 +4,15 @@
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
 }
 
 #resetPassImgCont{
     height:35vh;
     width:98vw;
-    overflow: hidden;
     border-radius: 10px;
     margin:20px auto;
     background: rgba(255, 0, 0, 0.8);
+    overflow: hidden;
 }
 
 #resetPassImg{

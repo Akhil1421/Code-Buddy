@@ -3,6 +3,7 @@ import PassReset from './components/passReset/changePass.jsx';
 import UserProfile from './components/user/UserProfile/UserProfile';
 import SignUp from './components/user/SignUp/SignUp.jsx';
 import SignIn from './components/user/LogIn/SignIn.jsx';
+import PassResetMail from './components/passReset/passResetMail/PassResetMail.jsx';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path="/resetPass" element={<PassReset></PassReset>}/>
+      <Route path="/resetPassMail" element={<PassResetMail></PassResetMail>}/>
       <Route path="/userProfile" element={<UserProfile></UserProfile>}/>
       <Route path="/signUp" element={<SignUp/>}/>
       <Route path="/signIn" element={<SignIn/>}/>
