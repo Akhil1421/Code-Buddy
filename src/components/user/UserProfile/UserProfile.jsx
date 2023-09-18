@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./UserProfile.css";
 import {
   MdHome,
@@ -10,24 +10,44 @@ import isPasswordStrong from "../../../data/isPasswordStrong";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import {FaUserEdit} from "react-icons/fa";
+import Editor from "./profilePic/Editor";
 
+const sendResponse = async (
+  Password,
+  queryParameters1,
+  setPassword,
+  setPassword2
+) => {
+  const response = await axios.post(
+    "http://localhost:5000/auth/changePass",
+    { user_id: queryParameters1.get("Token"), Password },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    }
+  );
+  toast.success(response.data.msg);
+  setPassword("");
+  setPassword2("");
+};
 
-
-
-const sendResponse=async (Password,queryParameters1,setPassword,setPassword2)=>{
-  const response = await axios.post('http://localhost:5000/auth/changePass', { user_id: queryParameters1.get('Token'), Password, }, {
-    headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      toast.success(response.data.msg);
-      setPassword('');
-      setPassword2('');
-}
-
-const clickHandler=(Password,Password2,setPassword,setPassword2,queryParameters1)=>{
-  Password===Password2?((!isPasswordStrong(Password)&&toast.error("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number!")||(sendResponse(Password,queryParameters1,setPassword,setPassword2)))):toast.error("Passwords do not match!");
+const clickHandler = (
+  Password,
+  Password2,
+  setPassword,
+  setPassword2,
+  queryParameters1
+) => {
+  Password === Password2
+    ? (!isPasswordStrong(Password) &&
+        toast.error(
+          "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number!"
+        )) ||
+      sendResponse(Password, queryParameters1, setPassword, setPassword2)
+    : toast.error("Passwords do not match!");
 };
 
 const UserProfile = () => {
@@ -35,6 +55,14 @@ const UserProfile = () => {
   const [Password, setPassword] = useState("");
   const [Password2, setPassword2] = useState("");
   const [queryParameters1] = useSearchParams();
+  const [isProfileHovered, setisProfileHovered] = useState(false);
+  const [isBackgroundHovered, setisBackgroundHovered] = useState(false);
+  const [isEditor,setIsEditor]=useState(false);
+  
+    // Function to toggle the hover state
+    const handleHover = () => {
+      setisProfileHovered(!isProfileHovered);
+    }; 
   return (
     <div id="outer">
       <div>
@@ -63,12 +91,17 @@ const UserProfile = () => {
         </div>
         <div id="content">
           <div id="first">
-            <div id="cover">
+            <div id="cover" onClick={()=>{
+              setIsEditor(true);
+            }}>
               <img
                 src="https://react-material-dashboard-laravel.creative-tim.com/static/media/bruce-mars.8a606c4a6dab54c9ceff.jpg"
                 alt="profile"
                 id="profile-pic"
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
               />
+              <FaUserEdit id="picEditIcon"  style={{zIndex:'2',color:'white',scale:'2',position:'absolute',marginTop:'28px',marginLeft:'-41px',visibility: isProfileHovered ? 'visible' : 'hidden'}} ></FaUserEdit>
             </div>
             <div id="first-right">
               <div className="bold">{userName}</div>
@@ -109,7 +142,7 @@ const UserProfile = () => {
                 className="fifty_percent"
                 placeholder="New Password"
                 value={Password}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setPassword(e.target.value);
                 }}
               ></input>
@@ -121,7 +154,7 @@ const UserProfile = () => {
                 placeholder="Confirm Password"
                 className="fifty_percent"
                 value={Password2}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setPassword2(e.target.value);
                 }}
               ></input>
@@ -131,12 +164,24 @@ const UserProfile = () => {
             </div>
           </div>
           <div>
-            <button id="third" onClick={()=>{
-              clickHandler(Password,Password2,setPassword,setPassword2,queryParameters1);
-            }}>Save Changes</button>
+            <button
+              id="third"
+              onClick={() => {
+                clickHandler(
+                  Password,
+                  Password2,
+                  setPassword,
+                  setPassword2,
+                  queryParameters1
+                );
+              }}
+            >
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
+            <Editor/>
     </div>
   );
 };

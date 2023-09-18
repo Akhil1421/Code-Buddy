@@ -1,0 +1,76 @@
+#sidebarOuter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    width:218px;
+    min-height:96vh;
+    margin:16px 16px 0 10px;
+    border-radius: 10px;    
+    border: 1px solid black;
+    padding: 0 16px ;
+    background-image: linear-gradient(to top,#151617,#333739);
+    /* position: fixed; */
+}
+
+#sideBarName{
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 800;
+}
+
+.sidebarItems{
+    display: flex;
+    height: 48px;
+    align-items: center ;
+    color:white;
+    margin:2px;
+}
+
+.sidebarItems:hover{
+    background-color: #666c749e;
+    border-radius:5px;
+}
+
+
+#sideBarName{
+    margin:auto; 
+}
+
+.sidebar-icons{
+    margin:10px;
+    color:white;
+    scale: 1.2;
+}
+
+.sidebar-text{
+    margin:10px;
+    color:white;
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size : 14px;
+    letter-spacing : 0.1876px;
+    /* line-height : 32.5px; */
+}
+
+#examples{
+    color:white;
+}
+#sidebarButton{
+background-image: linear-gradient(to top,#105aaf,#0e59a8);  
+    border:none;
+    height:40px;
+    width:218px;
+    margin:0 auto 10px;  
+    outline: none;
+    border-radius: 5px;  
+    font-family : "Roboto", "Helvetica", "Arial", sans-serif;
+    color:white;
+    font-weight:bold;
+}
+
+hr{
+    border-image: linear-gradient(to right, transparent, white, transparent); 
+  border-image-slice: 1; 
+  transition: border-image 0.3s ease-in-out;
+  width:96%;
+  border-width: 1px;
+}

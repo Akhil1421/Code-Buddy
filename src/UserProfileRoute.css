@@ -1,0 +1,14 @@
+#outerRight{
+    display: flex;
+}
+
+.OuterRight{
+    position: relative;
+    left:270px;
+    /* width:70vw; */
+}
+
+#outerRightBar{
+    height:100vh;
+    position: fixed;
+}
